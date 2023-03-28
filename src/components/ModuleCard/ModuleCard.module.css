@@ -1,0 +1,98 @@
+.rotatingDashed {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    overflow: hidden;
+    color: white;
+    margin: 20px;
+}
+
+.dashing {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.dashing:nth-of-type(1) {
+    transform: rotate(0deg);
+}
+
+.dashing:nth-of-type(2) {
+    transform: rotate(90deg);
+}
+
+.dashing:nth-of-type(3) {
+    transform: rotate(180deg);
+}
+
+.dashing:nth-of-type(4) {
+    transform: rotate(270deg);
+}
+
+.dashing i {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    border-bottom: 5px dashed;
+}
+
+.rotatingDashed:hover .dashing i {
+    animation: slideDash 2.5s infinite linear;
+}
+
+@keyframes slideDash {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.moduleCard {
+    width: 300px;
+    height: 300px;
+    margin: 5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.moduleImg {
+    filter: grayscale(1);
+    transition: all linear 0.2s;
+}
+
+.moduleImg:hover {
+    filter: grayscale(0);
+    transition: filter linear 0.2s;
+}
+
+.moduleTitle {
+    font-family:'Helvetica', monospace;
+    position: absolute;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(255, 87, 87);
+    box-shadow: 5px 5px black;
+}
+
+.moduleCard:hover {
+    animation: border-dance 4s infinite linear;
+}
+
+@keyframes border-dance {
+    0% {
+        background-position: 0px 0px, 300px 116px, 0px 150px, 216px 0px;
+    }
+    100% {
+        background-position: 300px 0px, 0px 116px, 0px 0px, 216px 150px;
+    }
+  }

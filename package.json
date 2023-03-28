@@ -1,0 +1,35 @@
+{
+  "name": "chefbstudios",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@descript/web-audio-js": "^0.15.3-patched.5",
+    "@feathersjs/feathers": "^5.0.1",
+    "@feathersjs/socketio": "^5.0.1",
+    "@feathersjs/socketio-client": "^5.0.1",
+    "@next/font": "13.1.6",
+    "@types/node": "18.14.1",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "arraybuffer-to-audiobuffer": "^0.0.5",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "react-social-icons": "^5.15.0",
+    "socket.io-client": "^4.6.1",
+    "typescript": "4.9.5",
+    "use-sound": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "^1.18.0"
+  }
+}

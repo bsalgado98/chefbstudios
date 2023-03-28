@@ -1,0 +1,151 @@
+.scheduleContainer {
+    margin-top: 75px;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgb(255, 87, 87);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: "Helvetica";
+}
+
+.landingHero {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.landingHero > div {
+    flex-basis: 50%;
+}
+
+@media (max-width: 767px) {
+    .landingHero {
+        flex-direction: column;
+    }
+
+    .landingHero > div {
+        flex-basis: 100%;
+    }
+
+    .heroLeft h1 {
+        font-size: 12vw !important;
+    }
+
+    .heroRight h1 {
+        font-size: 12vw !important;
+    }
+}
+
+.heroLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5%;
+}
+
+.heroLeft h1 {
+    font-size: 7vw;
+}
+
+.heroLeft h3 {
+    opacity: 0.6;
+}
+
+.heroRight {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formPaper {
+    background: white;
+    width: 75%;
+    height: 100%;
+    margin: 10px;
+    padding: 10%;
+    border-radius: 5px;
+    box-shadow: 10px 10px #000;
+}
+
+.formSuccess {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formSuccess h1 {
+    color: black;
+    animation: fadeIn 1s ease-in;
+    padding: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contactFormRow {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formPaper input {
+    width: 200px;
+    height: 40px;
+    background: white;
+    color: black;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.formPaper label {
+    align-self: flex-start;
+    color: gray;
+    font-size: 0.75rem;
+}
+
+.formPaper textarea {
+    width: 100%;
+    height: 200px;
+    background: white;
+    color: black;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.formPaper button {
+    width: 100px;
+    height: 40px;
+    background: rgb(255, 87, 87);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px #000;
+}
+
+.formPaper button:hover {
+    filter: brightness(125%);
+}
+
+.formPaper button:active {
+    box-shadow: 2px 2px #000;
+    transform: translateY(4px);
+}

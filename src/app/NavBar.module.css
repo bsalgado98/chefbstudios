@@ -1,0 +1,36 @@
+.navbar {
+    width: 100vw;
+    height: 75px;
+    position: fixed;
+    background: rgba(255, 255, 255, 1);
+    color: black;
+    display: flex;
+    z-index: 999;
+}
+
+.chefBStudiosLettering {
+    filter: invert();
+}
+
+.navBtnContainer {
+    margin: 10px;
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navBtn {
+    font-family:'Helvetica', monospace;
+    margin: 10px;
+    transition: all ease 0.2s;
+}
+.navBtn:hover {
+    transition: all ease 0.2s;
+    color: rgb(255, 87, 87);
+}
+
+.socialIcon {
+    margin: 5px;
+    padding: 5px;
+}

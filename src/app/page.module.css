@@ -1,0 +1,102 @@
+.main {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(255, 87, 87);
+}
+
+.landingHero {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.landingHero > div {
+    flex-basis: 50%;
+}
+
+@media (max-width: 767px) {
+    .landingHero {
+        flex-direction: column;
+    }
+
+    .landingHero > div {
+        flex-basis: 100%;
+    }
+
+    .heroRight {
+        align-items: center;
+    }
+
+    .heroRight h1 {
+        font-size: 12vw !important;
+    }
+
+    .landingModules {
+        flex-direction: column;
+    }
+
+    .landingModulesView h1 {
+        font-size: 12vw !important;
+    }
+}
+
+.heroLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroRight {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: 10%;
+}
+
+.heroRight h1 {
+    font-size: 7vw;
+    font-family:'Helvetica', monospace;
+}
+
+.landingModulesView {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.rainbowShimmer {
+    /* background: linear-gradient(to right, #ff5757, #81171b, #540804, #fcdebe, #d4d2a5, #fcdebe, #540804, #81171b); */
+    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    background-size: 200% auto;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 2s linear infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}  
+
+.landingModulesView h1 {
+    font-family:'Helvetica', monospace;
+    font-size: 7vw;
+    margin: 100px;
+}
+
+.landingModules {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
