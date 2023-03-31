@@ -122,7 +122,7 @@ function Schedule() {
                 <div className={styles.heroLeft}>
                     <h1>Schedule some</h1>
                     <h1>time with me</h1>
-                    <h3>Or just send some compliments to the "chef"</h3>
+                    <h3>Or just send some compliments to the &quot;chef&quot;</h3>
                 </div>
                 <div className={styles.heroRight}>
                     <div className={styles.formPaper}>

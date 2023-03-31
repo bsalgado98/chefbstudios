@@ -4,7 +4,7 @@ import chefBStudiosLettering from '@/img/chefBStudios_lettering.png';
 import { SocialIcon } from 'react-social-icons';
 import Link from 'next/link';
 
-const NavBar = async () => {
+const NavBar = () => {
     return (
         <div className={styles.navbar}>
             <Link href={'/'} >

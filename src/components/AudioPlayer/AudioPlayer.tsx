@@ -14,19 +14,19 @@ const AudioPlayer: NextPage<AudioPlayerType> = ({ track }) => {
     const [showPlayer, setShowPlayer] = useState(false)
     const [isPlaying, setIsPlaying] = useState(false)
     const [isScrubbing, setIsScrubbing] = useState(false)
-    const playerRef = useRef<HTMLAudioElement>()
-    const playerSourceRef = useRef<HTMLSourceElement>()
+    const playerRef = useRef<HTMLAudioElement>(null)
+    const playerSourceRef = useRef<HTMLSourceElement>(null)
 
-    const playerProgressRef = useRef<HTMLDivElement>()
-    const playerProgressBarRef = useRef<HTMLDivElement>()
-    const playerProgressThumbRef = useRef<HTMLDivElement>()
+    const playerProgressRef = useRef<HTMLDivElement>(null)
+    const playerProgressBarRef = useRef<HTMLDivElement>(null)
+    const playerProgressThumbRef = useRef<HTMLDivElement>(null)
 
-    const playerTimeRef = useRef<HTMLLabelElement>()
-    const playerDurationRef = useRef<HTMLLabelElement>()
+    const playerTimeRef = useRef<HTMLLabelElement>(null)
+    const playerDurationRef = useRef<HTMLLabelElement>(null)
 
-    const playerVolumeSliderRef = useRef<HTMLDivElement>()
-    const playerVolumeSliderBarRef = useRef<HTMLDivElement>()
-    const playerVolumeSliderThumbRef = useRef<HTMLDivElement>()
+    const playerVolumeSliderRef = useRef<HTMLDivElement>(null)
+    const playerVolumeSliderBarRef = useRef<HTMLDivElement>(null)
+    const playerVolumeSliderThumbRef = useRef<HTMLDivElement>(null)
 
     // Format the time in the format of "mm:ss"
     function formatTime(time: number) {

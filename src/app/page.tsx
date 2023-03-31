@@ -12,15 +12,7 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
     const [logoSize, setLogoSize] = useState(600);
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-
-    const handleViewportChange = (e: any) => {
-        if (e.matches) {
-            setLogoSize(400)
-        } else {
-            setLogoSize(600)
-        }
-    };
+    let mediaQuery: MediaQueryList;
 
     const handleResize = () => {
         if (mediaQuery.matches) {
@@ -30,12 +22,14 @@ export default function Home() {
         }
     }
 
-    // window.addEventListener('viewportChange', handleViewportChange);
-    window.addEventListener('resize', handleResize)
-
     useEffect(() => {
+        mediaQuery = window.matchMedia('(max-width: 767px)');
         window.dispatchEvent(new Event('resize'))
     }, [])
+
+    if (typeof window !== "undefined") {
+        window.addEventListener('resize', handleResize)
+    }
 
     return (
         <main className={styles.main}>
@@ -54,7 +48,7 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.landingModulesView}>
-                <h1>chefB's House <h2 className={styles.rainbowShimmer}>Specials</h2></h1>
+                <h1>chefB&apos;s House <h2 className={styles.rainbowShimmer}>Specials</h2></h1>
                 <div className={styles.landingModules}>
                     <Link href={'/browse'}>
                         <ModuleCard title={"Browse chefB"} img={{file: chefBTracks, alt: "chefB's Tracks"}}/>
