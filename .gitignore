@@ -38,3 +38,6 @@ next-env.d.ts
 /.history/
 
 /.firebase/
+
+.env
+bsalgado_accessKeys.csv

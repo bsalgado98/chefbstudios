@@ -1,33 +1,51 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path';
-import { createReadStream, promises as fs } from 'fs';
-import { statSync } from 'fs';
+import AWS from 'aws-sdk'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const range = req.headers.range
     const track = req.query.track as string
     const trackName = track.substring(0, track.indexOf(".")) + ".wav";
-    const tracksDir = path.join(process.cwd(), '/public/tracks');
-    const trackPath = path.resolve(`${tracksDir}/${trackName}`);
 
-    const stat = statSync(trackPath)
-    const fileSize = stat.size
+    const s3 = new AWS.S3({
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    })
 
-    const chunkSize = 10 ** 6 // 1MB
-    const start = Number(range?.replace(/\D/g, ""))
-    const end = Math.min(start + chunkSize, fileSize - 1)
-
-    const file = createReadStream(trackPath, { start, end })
-    const headers = {
-        'Content-Type': 'audio/wav',
-        'Content-Range': `bytes ${start}-${end}/${fileSize}`,
-        'Accept-Range': 'bytes',
-        'Content-Length': end - start + 1
+    const bucketName = 'chefbstudios'
+    const keyName = `tracks/${trackName}`
+    const params = {
+        Bucket: bucketName,
+        Key: keyName,
     }
 
-    res.writeHead(206, headers)
-    file.pipe(res)
+    const file = await s3.headObject(params).promise();
+    const rangeHeader = req.headers.range;
+    if (!rangeHeader) {
+        // If there is no range header, just send the entire file
+        res.writeHead(200, {
+            'Content-Type': 'audio/wav',
+            'Content-Length': file.ContentLength,
+        });
+        s3.getObject(params).createReadStream().pipe(res);
+    } else {
+        // If there is a range header, send only the requested bytes
+        const parts = rangeHeader.replace(/bytes=/, '').split('-');
+        const start = parseInt(parts[0], 10);
+        const end = parts[1] ? parseInt(parts[1], 10) : (typeof file.ContentLength === 'undefined' ? 1 : file.ContentLength) - 1;
+        const chunksize = (end - start) + 1;
+
+        res.writeHead(206, {
+            'Content-Range': `bytes ${start}-${end}/${file.ContentLength}`,
+            'Accept-Ranges': 'bytes',
+            'Content-Length': chunksize,
+            'Content-Type': 'audio/wav',
+        });
+
+        s3.getObject({...params, Range: `bytes=${start}-${end}`}).createReadStream().pipe(res);
+    }
+
 }
