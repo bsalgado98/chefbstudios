@@ -10,7 +10,7 @@ function Browse() {
             "Guard Down (chefB Remix).png",
             "Down with this Ship.png",
             "Co-star.png",
-            "Put it in the Bag.png",
+            "Put It in the Bag.png",
             "Weathers Warmin Up.png",
             "Liars.jpeg",
             "Cypher 64.png",
