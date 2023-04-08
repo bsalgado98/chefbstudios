@@ -5,14 +5,29 @@ import { useEffect, useState } from 'react';
 import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
 
 function Browse() {
-    const [albumArtwork, setAlbumArtwork] = useState([])
+    const [albumArtwork, setAlbumArtwork] = useState(
+        [
+            "Guard Down (chefB Remix).png",
+            "Down with this Ship.png",
+            "Co-star.png",
+            "Put it in the Bag.png",
+            "Weathers Warmin Up.png",
+            "Liars.jpeg",
+            "Cypher 64.png",
+            "Rapture (chefB Remix).jpeg",
+            "I Wanna Be Down.jpeg",
+            "Hi-life.png",
+            "Don't Want to Go.png",
+            "Caramel.jpeg"
+        ]
+    )
     const [requestedTrack, setRequestedTrack] = useState("")
 
-    useEffect(() => {
-        fetch('/api/get-album-artwork').then(res => res.json()).then(data => {
-            setAlbumArtwork(data.albumArtwork)
-        })
-    }, [])
+    // useEffect(() => {
+    //     fetch('/api/get-album-artwork').then(res => res.json()).then(data => {
+    //         setAlbumArtwork(TRACK_ORDER)
+    //     })
+    // }, [])
 
     return (
         <div className={styles.browseContainer}>
