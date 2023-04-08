@@ -5,6 +5,7 @@ import { BsFillVolumeUpFill } from 'react-icons/bs'
 import { IconContext } from 'react-icons';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { S3 } from '@aws-sdk/client-s3';
 
 interface AudioPlayerType {
     track: string
@@ -27,6 +28,14 @@ const AudioPlayer: NextPage<AudioPlayerType> = ({ track }) => {
     const playerVolumeSliderRef = useRef<HTMLDivElement>(null)
     const playerVolumeSliderBarRef = useRef<HTMLDivElement>(null)
     const playerVolumeSliderThumbRef = useRef<HTMLDivElement>(null)
+
+    const s3 = new S3({
+        credentials: {
+            accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID || "",
+            secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY || ""
+        },
+        region: "us-east-1"
+    })
 
     // Format the time in the format of "mm:ss"
     function formatTime(time: number) {
@@ -135,12 +144,29 @@ const AudioPlayer: NextPage<AudioPlayerType> = ({ track }) => {
         playTrack(track)
     }, [track])
     
-    const playTrack = (item: string) => {
+    const playTrack = async (item: string) => {
         setShowPlayer(true)
 
-        playerRef.current?.pause()
+        // playerRef.current?.pause()
         if (playerSourceRef.current) {
-            playerSourceRef.current.src = `/api/get-tracks?track=${item}`
+            // playerRef.current.src = `/api/get-tracks?track=${item}`
+            // playerSourceRef.current.src = `/api/get-tracks?track=${item}`
+            // const headers = { Range: `bytes=0-${2 * 1024 * 1024}` }
+            // const response = await fetch(`/api/get-tracks?track=${item}`, { headers })
+            // const streamUrl = URL.createObjectURL(await response.blob())
+            // playerSourceRef.current.src = streamUrl
+            const trackName = item.substring(0, item.indexOf(".")) + ".wav";
+            const bucketName = 'chefbstudios'
+            const keyName = `tracks/${trackName}`
+            const params = {
+                Bucket: bucketName,
+                Key: keyName
+            }
+            const body = (await s3.getObject(params)).Body
+            if (body) {
+                const blob = URL.createObjectURL(new Blob([await body.transformToByteArray()]))
+                playerSourceRef.current.src = blob
+            }
         }
         playerRef.current?.load()
     }
