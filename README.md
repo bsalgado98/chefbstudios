@@ -13,7 +13,7 @@ chefbstudios.com features 2 major components (so far):
   - Users can send me a message, either to schedule time to chat about music and record something, or just to drop a friendly message about my work
   
 ## Implementation
-The stack for chefbstudios.com consists of a fullstack NextJS project. React is used for the frontend, and a few Node routes are setup for the API. The entire project is deployed and monitored using Vercel.
+The stack for chefbstudios.com consists of a fullstack NextJS project. React/TypeScript is used for the frontend, and a few Node routes are setup for the API. The entire project is deployed and monitored using Vercel.
 ### Browse
 `Browse` was created using a custom music streaming interface. It involves simply streaming audio files directly from an AWS S3 bucket and playing them into an HTML audio element.
 
