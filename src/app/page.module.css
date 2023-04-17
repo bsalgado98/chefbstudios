@@ -71,12 +71,14 @@
 }
 
 .rainbowShimmer {
-    /* background: linear-gradient(to right, #ff5757, #81171b, #540804, #fcdebe, #d4d2a5, #fcdebe, #540804, #81171b); */
     background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
     background-size: 200% auto;
     background-clip: text;
     color: transparent;
     animation: rainbow 2s linear infinite;
+    font-size: 10vw;
+    font-family:'Helvetica', monospace;
+    margin-bottom: 50px;
 }
 
 @keyframes rainbow {
@@ -90,8 +92,7 @@
 
 .landingModulesView h1 {
     font-family:'Helvetica', monospace;
-    font-size: 7vw;
-    margin: 100px;
+    font-size: 4vw;
 }
 
 .landingModules {

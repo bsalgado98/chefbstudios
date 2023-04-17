@@ -7,6 +7,7 @@ import AudioPlayer from '@/components/AudioPlayer/AudioPlayer';
 function Browse() {
     const [albumArtwork, setAlbumArtwork] = useState(
         [
+            "Intertwined (chefB Remix).png",
             "Guard Down (chefB Remix).png",
             "Down with this Ship.png",
             "Co-star.png",
@@ -38,8 +39,7 @@ function Browse() {
                             alt={item}
                             src={`/album-artwork/${item}`}
                             key={item}
-                            width={500}
-                            height={500}
+                            fill
                         ></Image>
                         <div className={styles.albumArtworkOverlay} onClick={() => setRequestedTrack(item)}>
                             <h1 className={styles.albumArtworkTitle}>{item.substring(0, item.indexOf('.'))}</h1>

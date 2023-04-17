@@ -15,7 +15,7 @@ export default function Home() {
     let mediaQuery: MediaQueryList;
 
     const handleResize = () => {
-        if (mediaQuery.matches) {
+        if (mediaQuery && mediaQuery.matches) {
             setLogoSize(400)
         } else {
             setLogoSize(600)
@@ -48,7 +48,7 @@ export default function Home() {
                 </div>
             </div>
             <div className={styles.landingModulesView}>
-                <h1>chefB&apos;s House <h2 className={styles.rainbowShimmer}>Specials</h2></h1>
+                <h1>chefB&apos;s House</h1><h2 className={styles.rainbowShimmer}>Specials</h2>
                 <div className={styles.landingModules}>
                     <Link href={'/browse'}>
                         <ModuleCard title={"Browse chefB"} img={{file: chefBTracks, alt: "chefB's Tracks"}}/>
